@@ -8,6 +8,7 @@ const VideoPlayer = () => {
   const wrapperRef = useRef(null);
   const videoRef = useRef(null);
   const playbarRef = useRef(null);
+  const animationRef = useRef(null);
   const [scale, setScale] = useState(1);
   const [playing, setPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -35,6 +36,8 @@ const VideoPlayer = () => {
       setPlaying(true);
     } else {
       video.pause();
+      // force the video element to keep displaying the last frame
+      video.currentTime = video.currentTime;
       setPlaying(false);
     }
   };
@@ -42,8 +45,11 @@ const VideoPlayer = () => {
   const handleTimeUpdate = () => {
     const video = videoRef.current;
     if (!video) return;
-    setCurrentTime(video.currentTime);
     setDuration(video.duration);
+    // when paused, reflect the exact time
+    if (video.paused) {
+      setCurrentTime(video.currentTime);
+    }
   };
 
   const formatTime = (time) => {
@@ -72,12 +78,12 @@ const VideoPlayer = () => {
   };
 
   const toggleFullscreen = () => {
-    const video = videoRef.current;
-    if (!video) return;
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
     if (document.fullscreenElement) {
       document.exitFullscreen();
-    } else if (video.requestFullscreen) {
-      video.requestFullscreen();
+    } else if (wrapper.requestFullscreen) {
+      wrapper.requestFullscreen();
     }
   };
 
@@ -98,6 +104,24 @@ const VideoPlayer = () => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [hovered, playing]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const update = () => {
+      setCurrentTime(video.currentTime);
+      animationRef.current = requestAnimationFrame(update);
+    };
+
+    if (playing) {
+      animationRef.current = requestAnimationFrame(update);
+    } else {
+      cancelAnimationFrame(animationRef.current);
+    }
+
+    return () => cancelAnimationFrame(animationRef.current);
+  }, [playing]);
 
   return (
     <div className="video-player-wrapper" ref={wrapperRef}>
