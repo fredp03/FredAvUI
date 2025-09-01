@@ -72,39 +72,13 @@
 .volume-slider {
   width: 90px;
   height: 8px;
-  position: relative;
   margin-left: 47px;
 }
 
-.volume-slider .progress {
-  position: absolute;
-  left: 0;
-  top: 2px;
-  width: 59px;
-  height: 4px;
-  background: #4B5F47;
-  border-radius: 2px;
-}
-
-.volume-slider .area {
-  position: absolute;
-  left: 57px;
-  top: 2px;
-  width: 33px;
-  height: 4px;
-  background: #B5A0A0;
-  border-radius: 2px;
-}
-
-.volume-slider .indicator {
-  position: absolute;
-  left: 54px;
-  top: 0;
-  width: 8px;
-  height: 8px;
-  background: #E0E0E0;
-  border: 1.5px solid #0F172A;
-  border-radius: 50%;
+.volume-slider input {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
 }
 
 .controls-right {
@@ -117,6 +91,10 @@
   font-weight: 400;
 }
 
+.controls-right > div {
+  cursor: pointer;
+}
+
 .playbar {
   position: absolute;
   left: 40px;
@@ -126,6 +104,8 @@
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   border-radius: 5px;
+  cursor: pointer;
+  background: rgba(122, 112, 112, 0.64);
 }
 
 .playbar .elapsed {
@@ -133,19 +113,8 @@
   left: 0;
   top: 0;
   height: 100%;
-  width: 347px;
   background: #4B5F47;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.playbar .remaining {
-  position: absolute;
-  left: 342px;
-  top: 0;
-  height: 100%;
-  width: 1430px;
-  background: rgba(122, 112, 112, 0.64);
+  width: 0%;
 }
 
 .play-pause {
