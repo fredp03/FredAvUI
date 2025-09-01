@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import anime from 'animejs/lib/anime.es.js';
+import { animate } from 'animejs';
 import './VideoPlayer.css';
 
 const BASE_WIDTH = 1840;
@@ -139,11 +139,10 @@ const VideoPlayer = () => {
 
   useEffect(() => {
     if (duration && elapsedRef.current) {
-      progressAnimRef.current = anime({
-        targets: elapsedRef.current,
+      progressAnimRef.current = animate(elapsedRef.current, {
         width: '100%',
         duration: duration * 1000,
-        easing: 'linear',
+        ease: 'linear',
         autoplay: false,
       });
     }
