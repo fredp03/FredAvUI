@@ -1,0 +1,130 @@
+.video-player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+  --scale: 1;
+}
+
+.video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(14px * var(--scale));
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: block;
+}
+
+.controls-overlay {
+  position: absolute;
+  left: calc(21px * var(--scale));
+  right: calc(21px * var(--scale));
+  bottom: calc(20px * var(--scale));
+  height: calc(65px * var(--scale));
+  background: rgba(85, 92, 76, 0.62);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: calc(13px * var(--scale));
+  padding: calc(14px * var(--scale)) calc(40px * var(--scale)) calc(14px * var(--scale));
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.video-player:hover .controls-overlay {
+  opacity: 1;
+}
+
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.controls-left,
+.controls-right {
+  display: flex;
+  align-items: center;
+}
+
+.controls-left {
+  gap: calc(15px * var(--scale));
+}
+
+.controls-right {
+  gap: calc(20px * var(--scale));
+}
+
+.time-elapsed,
+.time-remaining {
+  color: #E0E0E0;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: calc(12px * var(--scale));
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  width: calc(90px * var(--scale));
+  height: calc(8px * var(--scale));
+  background: linear-gradient(to right, #4B5F47 calc(var(--volume) * 100%), #B5A0A0 calc(var(--volume) * 100%));
+  border-radius: calc(5px * var(--scale));
+  outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: calc(8px * var(--scale));
+  height: calc(8px * var(--scale));
+  background: #E0E0E0;
+  border: calc(1.5px * var(--scale)) solid #0F172A;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.playbar {
+  position: relative;
+  width: 100%;
+  height: calc(8px * var(--scale));
+  background: rgba(122, 112, 112, 0.64);
+  border-radius: calc(5px * var(--scale));
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.progress-elapsed {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: #4B5F47;
+}
+
+.icon svg {
+  width: calc(100% * var(--scale));
+  height: calc(100% * var(--scale));
+}
+
+.play-pause {
+  position: absolute;
+  bottom: calc(10px * var(--scale));
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.video-player:hover .play-pause {
+  opacity: 1;
+}
+
+.play-pause svg {
+  width: calc(50px * var(--scale));
+  height: calc(21px * var(--scale));
+}
