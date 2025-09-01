@@ -105,6 +105,7 @@
   overflow: hidden;
   border-radius: 5px;
   cursor: pointer;
+  background: rgba(122, 112, 112, 0.64);
 }
 
 .playbar .elapsed {
@@ -113,14 +114,6 @@
   top: 0;
   height: 100%;
   background: #4B5F47;
-  transition: width 0.1s linear;
-}
-
-.playbar .remaining {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  background: rgba(122, 112, 112, 0.64);
   transition: width 0.1s linear;
 }
 
@@ -133,23 +126,5 @@
   border: none;
   padding: 0;
   cursor: pointer;
-}
-
-.video-player-wrapper:fullscreen {
-  width: 100vw;
-  height: 100vh;
-}
-
-.video-player-wrapper:fullscreen .video-player-base {
-  width: 100%;
-  height: 100%;
-  transform: none;
-}
-
-.video-player-wrapper:fullscreen .video-placeholder {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
 }
 

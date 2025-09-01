@@ -78,12 +78,12 @@ const VideoPlayer = () => {
   };
 
   const toggleFullscreen = () => {
-    const wrapper = wrapperRef.current;
-    if (!wrapper) return;
+    const video = videoRef.current;
+    if (!video) return;
     if (document.fullscreenElement) {
       document.exitFullscreen();
-    } else if (wrapper.requestFullscreen) {
-      wrapper.requestFullscreen();
+    } else if (video.requestFullscreen) {
+      video.requestFullscreen();
     }
   };
 
@@ -176,13 +176,6 @@ const VideoPlayer = () => {
               <div
                 className="elapsed"
                 style={{ width: `${(currentTime / duration) * 100 || 0}%` }}
-              />
-              <div
-                className="remaining"
-                style={{
-                  left: `${(currentTime / duration) * 100 || 0}%`,
-                  width: `${(1 - currentTime / duration) * 100 || 100}%`,
-                }}
               />
             </div>
           </div>
