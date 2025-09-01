@@ -1,6 +1,6 @@
 .video-player-wrapper {
-  width: calc(100vw * 1840 / 3840);
-  max-width: 1840px;
+  width: calc(100vw * 2086 / 2693);
+  max-width: 2086px;
   aspect-ratio: 1840 / 1121;
   position: relative;
 }
