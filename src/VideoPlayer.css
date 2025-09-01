@@ -1,0 +1,170 @@
+.video-player {
+  position: relative;
+  width: 60%;
+  max-width: 100%;
+  aspect-ratio: 1840 / 1121;
+}
+
+.video-wrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.video-wrapper video {
+  position: absolute;
+  left: 0;
+  top: 1.2489%;
+  width: 100%;
+  height: 92.3283%;
+  object-fit: cover;
+  border-radius: 0.76%;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.hover-controls {
+  position: absolute;
+  left: 1.1413%;
+  top: 91.7874%;
+  width: 97.7174%;
+  height: 6.2802%;
+  background: rgba(85, 92, 76, 0.62);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0.72%;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.video-wrapper:hover .hover-controls {
+  opacity: 1;
+}
+
+.controls-left {
+  position: absolute;
+  left: 2.2247%;
+  top: 21.538%;
+  width: 7.3415%;
+  height: 23.077%;
+  color: #e0e0e0;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+}
+
+.time-elapsed {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.volume-slider {
+  position: absolute;
+  left: 35.606%;
+  top: 40%;
+  width: 68.182%;
+  height: 53.333%;
+  cursor: pointer;
+}
+
+.volume-track {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 33%;
+  background: #b5a0a0;
+  border-radius: 2px;
+}
+
+.volume-progress {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 33%;
+  background: #4b5f47;
+  border-radius: 2px;
+}
+
+.volume-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 8.888%;
+  height: 100%;
+  background: #e0e0e0;
+  border: 1.5px solid #0f172a;
+  border-radius: 50%;
+}
+
+.controls-right {
+  position: absolute;
+  left: 86.8743%;
+  top: 21.538%;
+  width: 10.901%;
+  height: 23.077%;
+  color: #e0e0e0;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+}
+
+.airplay-icon {
+  position: absolute;
+  left: 0;
+  top: 6.667%;
+}
+
+.captions-icon {
+  position: absolute;
+  left: 26.02%;
+  top: 0;
+}
+
+.settings-icon {
+  position: absolute;
+  left: 55.102%;
+  top: 6.667%;
+}
+
+.time-remaining {
+  position: absolute;
+  left: 79.592%;
+  top: 0;
+}
+
+.playbar {
+  position: absolute;
+  left: 2.2247%;
+  top: 66.154%;
+  width: 95.551%;
+  height: 12.308%;
+  background: rgba(122, 112, 112, 0.64);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.playbar-elapsed {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #4b5f47;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.play-toggle {
+  position: absolute;
+  left: 48.696%;
+  top: 97.056%;
+  width: 2.717%;
+  height: 1.873%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.play-toggle svg {
+  width: 100%;
+  height: 100%;
+}
