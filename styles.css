@@ -1,0 +1,135 @@
+body {
+  margin: 0;
+  background: #E0DCD5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.player-wrapper {
+  position: relative;
+}
+
+.player-inner {
+  width: 1840px;
+  height: 1121px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+}
+
+.video-placeholder {
+  width: 1840px;
+  height: 1035px;
+  left: 0;
+  top: 14px;
+  position: absolute;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  border-radius: 14px;
+  background: black;
+}
+
+.video-placeholder video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hover-controls {
+  width: 1798px;
+  height: 65px;
+  left: 21px;
+  top: 950px;
+  position: absolute;
+  background: rgba(85, 92, 76, 0.62);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 13px;
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.player-wrapper:hover .hover-controls {
+  opacity: 1;
+}
+
+.controls-left {
+  width: 137px;
+  height: 15px;
+  left: 25px;
+  top: 14px;
+  position: absolute;
+}
+
+.time-elapsed {
+  left: 0;
+  top: 0;
+  position: absolute;
+  color: #E0E0E0;
+  font-size: 12px;
+  font-family: Inter, sans-serif;
+}
+
+.volume-slider {
+  width: 90px;
+  height: 8px;
+  left: 47px;
+  top: 6px;
+  position: absolute;
+}
+
+.volume-slider input {
+  width: 100%;
+}
+
+.controls-right {
+  width: 196px;
+  height: 15px;
+  right: 25px;
+  top: 14px;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 12px;
+  box-sizing: border-box;
+}
+
+.time-remaining {
+  color: #E0E0E0;
+  font-size: 12px;
+  font-family: Inter, sans-serif;
+}
+
+.playbar {
+  width: 1772px;
+  height: 8px;
+  left: 13px;
+  top: 43px;
+  position: absolute;
+  background: black;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.playbar-elapsed {
+  height: 8px;
+  background: #291F1F;
+}
+
+.playpause {
+  left: 896px;
+  top: 1088px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.playpause svg {
+  width: 50px;
+  height: 21px;
+}
