@@ -1,6 +1,6 @@
 .video-player-wrapper {
   width: 100%;
-  max-width: 100%;
+  max-width: 1840px;
   aspect-ratio: 1840 / 1121;
   position: relative;
 }
@@ -110,7 +110,7 @@
 .controls-right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 34px;
   color: #E0E0E0;
   font-size: 12px;
   font-family: Inter, sans-serif;
