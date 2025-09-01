@@ -114,7 +114,7 @@
   top: 0;
   height: 100%;
   background: #4B5F47;
-  transition: width 0.1s linear;
+  width: 0%;
 }
 
 .play-pause {

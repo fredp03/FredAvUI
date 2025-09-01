@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import anime from 'animejs/lib/anime.es.js';
 import './VideoPlayer.css';
 
 const BASE_WIDTH = 1840;
@@ -9,6 +10,8 @@ const VideoPlayer = () => {
   const videoRef = useRef(null);
   const playbarRef = useRef(null);
   const animationRef = useRef(null);
+  const elapsedRef = useRef(null);
+  const progressAnimRef = useRef(null);
   const [scale, setScale] = useState(1);
   const [playing, setPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -33,11 +36,17 @@ const VideoPlayer = () => {
     if (!video) return;
     if (video.paused) {
       video.play();
+      if (progressAnimRef.current && duration) {
+        const anim = progressAnimRef.current;
+        anim.seek((video.currentTime / duration) * anim.duration);
+        anim.play();
+      }
       setPlaying(true);
     } else {
       video.pause();
       // force the video element to keep displaying the last frame
       video.currentTime = video.currentTime;
+      progressAnimRef.current?.pause();
       setPlaying(false);
     }
   };
@@ -74,7 +83,12 @@ const VideoPlayer = () => {
     if (!playbarRef.current || !videoRef.current) return;
     const rect = playbarRef.current.getBoundingClientRect();
     const percent = (e.clientX - rect.left) / rect.width;
-    videoRef.current.currentTime = percent * duration;
+    const newTime = percent * duration;
+    videoRef.current.currentTime = newTime;
+    if (progressAnimRef.current) {
+      progressAnimRef.current.seek(percent * progressAnimRef.current.duration);
+    }
+    setCurrentTime(newTime);
   };
 
   const toggleFullscreen = () => {
@@ -122,6 +136,18 @@ const VideoPlayer = () => {
 
     return () => cancelAnimationFrame(animationRef.current);
   }, [playing]);
+
+  useEffect(() => {
+    if (duration && elapsedRef.current) {
+      progressAnimRef.current = anime({
+        targets: elapsedRef.current,
+        width: '100%',
+        duration: duration * 1000,
+        easing: 'linear',
+        autoplay: false,
+      });
+    }
+  }, [duration]);
 
   return (
     <div className="video-player-wrapper" ref={wrapperRef}>
@@ -173,10 +199,7 @@ const VideoPlayer = () => {
               </div>
             </div>
             <div className="playbar" onClick={handleSeek} ref={playbarRef}>
-              <div
-                className="elapsed"
-                style={{ width: `${(currentTime / duration) * 100 || 0}%` }}
-              />
+              <div className="elapsed" ref={elapsedRef} />
             </div>
           </div>
         </div>
