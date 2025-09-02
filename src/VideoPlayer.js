@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import anime from 'animejs';
+import anime from 'animejs/lib/anime.es.js';
 import './VideoPlayer.css';
 
 // Base dimensions for the video area
